@@ -19,8 +19,11 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (value) {
+    return value.length;
+  }
+  return 0;
 }
 
 /**
@@ -37,8 +40,11 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (typeof value === 'string' || value instanceof String) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -53,8 +59,8 @@ function isString(/* value */) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  return value1 + value2;
 }
 
 /**
@@ -68,8 +74,8 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  return value[0];
 }
 
 /**
@@ -83,8 +89,8 @@ function getFirstChar(/* value */) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
 
 /**
@@ -130,8 +136,8 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(value, count) {
+  return value.repeat(count);
 }
 
 /**
@@ -333,7 +339,7 @@ function findLongestWord(/* sentence */) {
  *
  * @example:
  *   reverseWords('Hello World') => 'olleH dlroW'
- *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
+ *   reverseWords('The Quick Brown Fox) => 'ehT kciuQ nworB xoF'
  */
 function reverseWords(/* str */) {
   throw new Error('Not implemented');
@@ -367,8 +373,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -381,8 +387,8 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.slice(7, -1);
 }
 
 /**
@@ -396,8 +402,8 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.slice(1, -1);
 }
 
 /**
@@ -415,8 +421,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -435,8 +441,173 @@ function extractEmails(/* str */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  let newString = '';
+  for (let i = 0; i < str.length; i += 1) {
+    switch (str[i]) {
+      case 'a':
+        newString += 'n';
+        break;
+      case 'b':
+        newString += 'o';
+        break;
+      case 'c':
+        newString += 'p';
+        break;
+      case 'd':
+        newString += 'q';
+        break;
+      case 'e':
+        newString += 'r';
+        break;
+      case 'f':
+        newString += 's';
+        break;
+      case 'g':
+        newString += 't';
+        break;
+      case 'h':
+        newString += 'u';
+        break;
+      case 'i':
+        newString += 'v';
+        break;
+      case 'j':
+        newString += 'w';
+        break;
+      case 'k':
+        newString += 'x';
+        break;
+      case 'l':
+        newString += 'y';
+        break;
+      case 'm':
+        newString += 'z';
+        break;
+      case 'n':
+        newString += 'a';
+        break;
+      case 'o':
+        newString += 'b';
+        break;
+      case 'p':
+        newString += 'c';
+        break;
+      case 'q':
+        newString += 'd';
+        break;
+      case 'r':
+        newString += 'e';
+        break;
+      case 's':
+        newString += 'f';
+        break;
+      case 't':
+        newString += 'g';
+        break;
+      case 'u':
+        newString += 'h';
+        break;
+      case 'v':
+        newString += 'i';
+        break;
+      case 'w':
+        newString += 'j';
+        break;
+      case 'x':
+        newString += 'k';
+        break;
+      case 'y':
+        newString += 'l';
+        break;
+      case 'z':
+        newString += 'm';
+        break;
+      case 'A':
+        newString += 'N';
+        break;
+      case 'B':
+        newString += 'O';
+        break;
+      case 'C':
+        newString += 'P';
+        break;
+      case 'D':
+        newString += 'Q';
+        break;
+      case 'E':
+        newString += 'R';
+        break;
+      case 'F':
+        newString += 'S';
+        break;
+      case 'G':
+        newString += 'T';
+        break;
+      case 'H':
+        newString += 'U';
+        break;
+      case 'I':
+        newString += 'V';
+        break;
+      case 'J':
+        newString += 'W';
+        break;
+      case 'K':
+        newString += 'X';
+        break;
+      case 'L':
+        newString += 'Y';
+        break;
+      case 'M':
+        newString += 'Z';
+        break;
+      case 'N':
+        newString += 'A';
+        break;
+      case 'O':
+        newString += 'B';
+        break;
+      case 'P':
+        newString += 'C';
+        break;
+      case 'Q':
+        newString += 'D';
+        break;
+      case 'R':
+        newString += 'E';
+        break;
+      case 'S':
+        newString += 'F';
+        break;
+      case 'T':
+        newString += 'G';
+        break;
+      case 'U':
+        newString += 'H';
+        break;
+      case 'V':
+        newString += 'I';
+        break;
+      case 'W':
+        newString += 'J';
+        break;
+      case 'X':
+        newString += 'K';
+        break;
+      case 'Y':
+        newString += 'L';
+        break;
+      case 'Z':
+        newString += 'M';
+        break;
+      default:
+        newString += str[i];
+        break;
+    }
+  }
+
+  return newString;
 }
 
 /**
@@ -463,8 +634,70 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  let id = 0;
+  switch (value.slice(-1)) {
+    case '♣':
+      id += 0;
+      break;
+    case '♦':
+      id += 13;
+      break;
+    case '♥':
+      id += 26;
+      break;
+    case '♠':
+      id += 39;
+      break;
+    default:
+      break;
+  }
+
+  switch (value.slice(0, -1)) {
+    case 'A':
+      id += 0;
+      break;
+    case '2':
+      id += 1;
+      break;
+    case '3':
+      id += 2;
+      break;
+    case '4':
+      id += 3;
+      break;
+    case '5':
+      id += 4;
+      break;
+    case '6':
+      id += 5;
+      break;
+    case '7':
+      id += 6;
+      break;
+    case '8':
+      id += 7;
+      break;
+    case '9':
+      id += 8;
+      break;
+    case '10':
+      id += 9;
+      break;
+    case 'J':
+      id += 10;
+      break;
+    case 'Q':
+      id += 11;
+      break;
+    case 'K':
+      id += 12;
+      break;
+    default:
+      break;
+  }
+
+  return id;
 }
 
 module.exports = {
